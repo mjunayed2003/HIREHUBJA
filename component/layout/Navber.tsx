@@ -45,7 +45,7 @@ export default function Navbar() {
         <div className="flex-shrink-0">
           <Link href="/">
             <Image
-              src="/image/logo.jpg"
+              src="/image/logo.svg"
               alt="HireHubJA Logo"
               width={109}
               height={90}

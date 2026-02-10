@@ -118,7 +118,7 @@ export default function ForgotPasswordFlow() {
           {step !== 1 && (
              <div className="mb-6">
                 <Image 
-                    src="/image/signin.jpg" 
+                    src="/image/logo.svg" 
                     alt="Logo" 
                     width={140} 
                     height={80} 
@@ -129,7 +129,7 @@ export default function ForgotPasswordFlow() {
 
           {/* ---------------- STEP 1: FORGOT PASSWORD ---------------- */}
           {step === 1 && (
-            <div className="w-full max-w-sm animate-in fade-in slide-in-from-right-4 duration-300">
+            <div className="w-full max-w-md text-center animate-in fade-in slide-in-from-right-4 duration-300">
               <div className="text-center mb-8">
                 <h1 className="text-2xl font-bold text-[#3FAE2A] mb-2">Forgot Password</h1>
                 <p className="text-gray-500 text-sm">

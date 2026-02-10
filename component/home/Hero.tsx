@@ -12,7 +12,7 @@ export default function HomePage() {
 
       {/* ---------------- HERO SECTION ---------------- */}
       <section className="relative pt-10 pb-20 lg:pt-[60px]">
-        <div className="container mx-auto px-4 max-w-[1393px]">
+        <div className="w-full mx-auto px-4 max-w-[1393px]">
           
           <div className="flex flex-col xl:flex-row justify-center items-start gap-10 xl:gap-[80px]">
             
@@ -228,7 +228,7 @@ export default function HomePage() {
         <div className="relative w-full max-w-[1621px] h-[312px] rounded-[18px] overflow-hidden shadow-2xl group">
              {/* Image & Overlay */}
              <Image src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070" alt="Meeting" fill className="object-cover group-hover:scale-105 transition-transform duration-700"/>
-             <div className="absolute inset-0 bg-gradient-to-r from-[#1a3d16]/95 via-[#2d5c26]/80 to-[#3FAE2A]/50 mix-blend-multiply"></div>
+             <div className="absolute inset-0 bg-linear-to-r from-[#1a3d16]/80 via-[#2d5c26]/80 to-[#3FAE2A]/40 mix-blend-multiply"></div>
              
              {/* Stats */}
              <div className="relative z-10 h-full flex flex-col md:flex-row items-center justify-evenly text-center text-white">

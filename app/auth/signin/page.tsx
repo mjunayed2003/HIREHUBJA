@@ -70,7 +70,7 @@ export default function SignInPage() {
                     <div className="mb-6 text-center">
                         <div className="flex flex-col items-center">
                             <Image
-                                src="/image/signin.jpg"
+                                src="/image/logo.svg"
                                 alt="HireHubJA Logo"
                                 width={300} // Adjusted width for better proportion
                                 height={150}
