@@ -138,7 +138,7 @@ export default function SignInPage() {
 
                     <div className="mt-8 text-sm text-gray-500">
                         Don't have an account?
-                        <Link href="/auth/signup" className="text-[#3FAE2A] font-semibold ml-1 hover:underline">
+                        <Link href="/signup" className="text-[#3FAE2A] font-semibold ml-1 hover:underline">
                             Sign up
                         </Link>
                     </div>
