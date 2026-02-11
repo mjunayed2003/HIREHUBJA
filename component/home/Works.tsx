@@ -22,7 +22,7 @@ const steps = [
   }
 ]
 
-const KeyFeatures = () => {
+const Works = () => {
   return (
     <section className="py-16 bg-white">
       {/* Container with fixed width as per request (max-width used for responsiveness) */}
@@ -77,4 +77,4 @@ const KeyFeatures = () => {
   )
 }
 
-export default KeyFeatures
+export default Works
