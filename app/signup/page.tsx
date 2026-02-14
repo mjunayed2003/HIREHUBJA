@@ -45,7 +45,7 @@ const handleNext = () => {
     } else if (selectedRole === "employer") {
         router.push("/signup/employer");
     } else if (selectedRole === "job-seeker") {
-        router.push("/signup/job-seeker");
+        router.push("/signup/jobseaker");
     }
 };
 

@@ -1,9 +1,12 @@
+// src/redux/authSlice.ts
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface User {
   id: string;
   name: string;
-  avatar: string;
+  email: string;
+  avatar?: string;
+  role: "company" | "employer" | "job-seeker";
 }
 
 interface AuthState {
