@@ -5,7 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, Share2, Flag, Bookmark, Briefcase, MapPin, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import ReportModal from "@/component/jobseaker/ReportModal";
+import ReportModal from "@/component/card/ReportModal";
 
 export default function JobDetailsPage() {
   return (

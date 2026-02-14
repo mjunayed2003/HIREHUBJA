@@ -115,8 +115,8 @@ export default function Navbar() {
                 key={link.href}
                 href={link.href}
                 className={`text-base font-medium transition-all duration-200 ${isActive
-                    ? "text-[#3FAE2A] border-b-2 border-[#3FAE2A] pb-1"
-                    : "text-gray-600 hover:text-[#3FAE2A]"
+                  ? "text-[#3FAE2A] border-b-2 border-[#3FAE2A] pb-1"
+                  : "text-gray-600 hover:text-[#3FAE2A]"
                   }`}
               >
                 {link.label}
@@ -148,15 +148,15 @@ export default function Navbar() {
               {/* Notification Bell */}
               <Link href="/auth/notifications">
                 <Button
-                variant="ghost"
-                size="icon"
-                className="relative rounded-full bg-gray-50 text-gray-500 hover:text-[#3FAE2A] hover:bg-green-50 h-10 w-10 transition"
-              >
-                <Bell className="h-5 w-5" />
-                <span className="sr-only">Notifications</span>
-                {/* Red Dot Indicator */}
-                <span className="absolute top-2.5 right-2.5 h-2 w-2 rounded-full bg-red-500 ring-2 ring-white" />
-              </Button>
+                  variant="ghost"
+                  size="icon"
+                  className="relative rounded-full bg-gray-50 text-gray-500 hover:text-[#3FAE2A] hover:bg-green-50 h-10 w-10 transition"
+                >
+                  <Bell className="h-5 w-5" />
+                  <span className="sr-only">Notifications</span>
+                  {/* Red Dot Indicator */}
+                  <span className="absolute top-2.5 right-2.5 h-2 w-2 rounded-full bg-red-500 ring-2 ring-white" />
+                </Button>
 
               </Link>
               {/* User Dropdown Profile */}
@@ -187,25 +187,17 @@ export default function Navbar() {
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
 
-                  <DropdownMenuItem className="cursor-pointer">
+                  <DropdownMenuItem className="cursor-pointer" onClick={() => router.push(`/auth/${user?.role}/profile`)}>
                     <User className="mr-2 h-4 w-4" />
                     <span>Profile</span>
                   </DropdownMenuItem>
 
-                  <DropdownMenuItem className="cursor-pointer">
+                  <DropdownMenuItem className="cursor-pointer" onClick={() => router.push(`/auth/${user?.role}/settings`)}>
                     <Settings className="mr-2 h-4 w-4" />
                     <span>Settings</span>
                   </DropdownMenuItem>
 
                   <DropdownMenuSeparator />
-
-                  <DropdownMenuItem
-                    className="text-red-600 focus:text-red-600 focus:bg-red-50 cursor-pointer"
-                    onClick={handleLogout}
-                  >
-                    <LogOut className="mr-2 h-4 w-4" />
-                    <span>Log out</span>
-                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>

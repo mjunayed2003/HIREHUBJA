@@ -5,7 +5,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Search, SlidersHorizontal } from "lucide-react";
 import { Input } from "@/components/ui/input";
-import JobCard from "@/component/jobseaker/JobCard";
+import JobCard from "@/component/card/JobCard";
 
 // --- MOCK DATA (Fixed IDs) ---
 const JOBS = [
@@ -17,7 +17,7 @@ const JOBS = [
         date: "20 Dec 2026",
         salary: "$1000/Month",
         location: "Dhaka, Bangladesh",
-        type: ["Full Time", "Senior level", "On-site"],
+        type: ["Full Time", "Senior level", "On-site", "Sales"],
         status: null,
     },
     {
@@ -28,7 +28,7 @@ const JOBS = [
         date: "21 Dec 2026",
         salary: "$2000/Month",
         location: "Remote",
-        type: ["Full Time", "Mid level", "Remote"],
+        type: ["Full Time", "Mid level", "Remote", "Sales"],
         status: "Submitted",
     },
     {
@@ -39,7 +39,7 @@ const JOBS = [
         date: "22 Jan 2026",
         salary: "$3000/Month",
         location: "California, USA",
-        type: ["Contract", "Senior level", "Hybrid"],
+        type: ["Contract", "Senior level", "Hybrid", "Sales"],
         status: "Interview Scheduled",
     },
     {
@@ -50,7 +50,7 @@ const JOBS = [
         date: "25 Dec 2026",
         salary: "$4000/Month",
         location: "London, UK",
-        type: ["Full Time", "Lead", "On-site"],
+        type: ["Full Time", "Lead", "On-site", "Sales"],
         status: "Hired",
     },
     {
@@ -61,7 +61,7 @@ const JOBS = [
         date: "25 Dec 2026",
         salary: "$4000/Month",
         location: "London, UK",
-        type: ["Full Time", "Lead", "On-site"],
+        type: ["Full Time", "Lead", "On-site", "Sales"],
         status: "Hired",
     },
 ];

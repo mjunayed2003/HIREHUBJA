@@ -48,7 +48,7 @@ export default function JobCard({ job }: { job: JobProps }) {
       {/* Company Info */}
       <div className="flex items-center gap-3 mb-3">
         <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center overflow-hidden border border-gray-100">
-          <Image src={job.logo} alt={job.company} width={40} height={40} className="object-cover"/>
+          <Image src={job.logo} alt={job.company} width={40} height={40} className="rounded-full scale-150"/>
         </div>
         <span className="text-xs font-semibold text-gray-500">{job.company}</span>
       </div>

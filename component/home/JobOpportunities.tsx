@@ -85,23 +85,24 @@ const JobOpportunities = () => {
 
       {/* Job Cards Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
-        {jobListings.splice(0,6).map((job) => (
+        {jobListings.slice(0, 6).map((job) => (
           <Card
             key={job.id}
-            className="bg-[#F9F9F9] border-none shadow-sm hover:shadow-md transition-shadow duration-300 rounded-xl"
+            className="w-[260px] h-[284px]  bg-white rounded-[10px] border-[0.6px] border-[#E5E7EB] shadow-[0px_0px_10px_2px_#3FAE2A1A]  transition-all duration-300
+  "
           >
-            <CardHeader className="flex flex-row items-start justify-between pb-2 space-y-0">
+            <CardHeader className="flex flex-row items-start justify-between space-y-0">
               <div className="flex items-center gap-3">
-                <Avatar className="h-10 w-10 bg-white border rounded-full">
+                <Avatar className="h-10 w-10 bg-white border rounded-full overflow-hidden">
                   <AvatarImage
                     src="/image/jobOpportunities.jpg"
                     alt="Job icon"
-                    className="rounded-full object-cover"
+                    className="rounded-full  scale-200"
                   />
                   <AvatarFallback>JOB</AvatarFallback>
                 </Avatar>
-
               </div>
+
 
               <div className="flex items-center gap-2">
                 <span className="text-xs text-gray-500 font-medium">
@@ -138,7 +139,7 @@ const JobOpportunities = () => {
               </div>
             </CardContent>
 
-            <CardFooter className="flex flex-col items-start pt-2 gap-2">
+            <CardFooter className="flex flex-col items-start gap-2">
               <p className="text-[#3FAE2A] font-bold text-sm">{job.salary}</p>
               <div className="flex items-center text-gray-500 text-xs gap-1">
                 <MapPin className="h-3 w-3" />
