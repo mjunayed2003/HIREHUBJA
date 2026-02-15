@@ -1,3 +1,5 @@
+"use client"
+
 import React from 'react'
 import { Card, CardContent, CardFooter, CardHeader } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
@@ -5,7 +7,6 @@ import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Bookmark, MapPin } from "lucide-react"
 import Image from 'next/image'
-
 
 const jobListings = [
   {
@@ -72,7 +73,8 @@ const jobListings = [
 
 const JobOpportunities = () => {
   return (
-    <div className=' max-w-[1622px] w-full mx-auto  pb-10 px-4'>
+    <div className='max-w-[1622px] w-full mx-auto pb-10 px-4'>
+      
       {/* Header Section */}
       <div className='mx-auto pb-12'>
         <h5 className='text-[40px] md:text-[64px] font-bold mx-auto text-center text-[#3FAE2A] leading-tight'>
@@ -84,28 +86,26 @@ const JobOpportunities = () => {
       </div>
 
       {/* Job Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 justify-center">
         {jobListings.slice(0, 6).map((job) => (
           <Card
             key={job.id}
-            className="w-[260px] h-[284px]  bg-white rounded-[10px] border-[0.6px] border-[#E5E7EB] shadow-[0px_0px_10px_2px_#3FAE2A1A]  transition-all duration-300
-  "
+            className="w-full sm:w-[260px] h-[284px] bg-white rounded-[10px] border-[0.6px] border-[#E5E7EB] shadow-[0px_0px_10px_2px_#3FAE2A1A] transition-all duration-300"
           >
             <CardHeader className="flex flex-row items-start justify-between space-y-0">
               <div className="flex items-center gap-3">
                 <Avatar className="h-10 w-10 bg-white border rounded-full overflow-hidden">
                   <AvatarImage
-                    src="/image/jobOpportunities.jpg"
+                    src={job.logo}
                     alt="Job icon"
-                    className="rounded-full  scale-200"
+                    className="rounded-full scale-200"
                   />
                   <AvatarFallback>JOB</AvatarFallback>
                 </Avatar>
               </div>
 
-
-              <div className="flex items-center gap-2">
-                <span className="text-xs text-gray-500 font-medium">
+              <div className="flex items-center mt-3 gap-2">
+                <span className="text-xs text-gray-500 font-medium border border-gray-300 px-2 py-0.5 rounded-full">
                   {job.date}
                 </span>
                 <Button
@@ -148,7 +148,6 @@ const JobOpportunities = () => {
             </CardFooter>
           </Card>
         ))}
-
       </div>
     </div>
   )

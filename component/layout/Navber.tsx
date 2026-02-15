@@ -82,11 +82,6 @@ export default function Navbar() {
     }
   }
 
-  // --- Handle Logout ---
-  const handleLogout = () => {
-    dispatch(logout());
-    router.push("/signin"); // Redirect to login page
-  };
 
   return (
     <header className="w-full bg-white border-b sticky top-0 z-50 shadow-sm">
