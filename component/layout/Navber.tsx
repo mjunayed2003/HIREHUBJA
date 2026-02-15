@@ -35,7 +35,7 @@ const COMPANY_LINKS = [
   { label: "Jobs", href: "/auth/company/jobs" },
   { label: "Inbox", href: "/auth/inbox" },
   { label: "How It Works", href: "/how-it-works" },
-  { label: "Support", href: "/auth/support" },
+  { label: "Support", href: "/support" },
 ];
 
 const EMPLOYER_LINKS = [
@@ -43,15 +43,15 @@ const EMPLOYER_LINKS = [
   { label: "Jobs", href: "/auth/employer/jobs" },
   { label: "Inbox", href: "/auth/inbox" },
   { label: "How It Works", href: "/how-it-works" },
-  { label: "Support", href: "/auth/support" },
+  { label: "Support", href: "/support" },
 ];
 
 const JOB_SEEKER_LINKS = [
   { label: "Home", href: "/" },
   { label: "Jobs", href: "/auth/jobseaker/jobs" },
   { label: "Inbox", href: "/auth/inbox" },
-  { label: "How It Works", href: "/auth/jobseaker/how-it-works" },
-  { label: "Support", href: "/auth/support" },
+  { label: "How It Works", href: "/how-it-works" },
+  { label: "Support", href: "/support" },
 ];
 
 export default function Navbar() {
