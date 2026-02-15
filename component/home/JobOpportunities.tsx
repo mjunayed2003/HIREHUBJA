@@ -22,7 +22,7 @@ const jobListings = [
   {
     id: 2,
     company: "Mercedes Benz",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Benz_Logo_2010.svg/1024px-Mercedes-Benz_Logo_2010.svg.png",
+    logo: "/image/jobOpportunities.jpg",
     date: "20 Dec 2026",
     title: "Senior Sales Executive",
     tags: ["Full Time", "Senior level", "On-site", "Sales"],
@@ -32,7 +32,7 @@ const jobListings = [
   {
     id: 3,
     company: "Mercedes Benz",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Benz_Logo_2010.svg/1024px-Mercedes-Benz_Logo_2010.svg.png",
+    logo: "/image/jobOpportunities.jpg",
     date: "20 Dec 2026",
     title: "Senior Sales Executive",
     tags: ["Full Time", "Senior level", "On-site", "Sales"],
@@ -42,7 +42,7 @@ const jobListings = [
   {
     id: 4,
     company: "Mercedes Benz",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Benz_Logo_2010.svg/1024px-Mercedes-Benz_Logo_2010.svg.png",
+    logo: "/image/jobOpportunities.jpg",
     date: "20 Dec 2026",
     title: "Senior Sales Executive",
     tags: ["Full Time", "Senior level", "On-site", "Sales"],
@@ -52,7 +52,7 @@ const jobListings = [
   {
     id: 5,
     company: "Mercedes Benz",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Benz_Logo_2010.svg/1024px-Mercedes-Benz_Logo_2010.svg.png",
+    logo: "/image/jobOpportunities.jpg",
     date: "20 Dec 2026",
     title: "Senior Sales Executive",
     tags: ["Full Time", "Senior level", "On-site", "Sales"],
@@ -62,7 +62,7 @@ const jobListings = [
   {
     id: 6,
     company: "Mercedes Benz",
-    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Mercedes-Benz_Logo_2010.svg/1024px-Mercedes-Benz_Logo_2010.svg.png",
+    logo: "/image/jobOpportunities.jpg",
     date: "20 Dec 2026",
     title: "Senior Sales Executive",
     tags: ["Full Time", "Senior level", "On-site", "Sales"],

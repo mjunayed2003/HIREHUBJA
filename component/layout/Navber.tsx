@@ -1,10 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { useSelector, useDispatch } from "react-redux";
-import { Bell, ChevronDown, LogOut, User, Settings } from "lucide-react";
+import { Bell, ChevronDown, LogOut, User, Settings, Menu, X } from "lucide-react";
 
 import { RootState } from "@/redux/store";
 import { logout } from "@/redux/authSlice";
@@ -57,6 +58,7 @@ export default function Navbar() {
   const dispatch = useDispatch();
   const router = useRouter();
   const pathname = usePathname();
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   // Get Auth State
   const { user, isAuthenticated } = useSelector(
@@ -82,26 +84,28 @@ export default function Navbar() {
     }
   }
 
+  const toggleMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
+  const closeMenu = () => setIsMobileMenuOpen(false);
 
   return (
     <header className="w-full bg-white border-b sticky top-0 z-50 shadow-sm">
       <div className="mx-auto flex h-[90px] w-full max-w-[1393px] items-center justify-between px-4 md:px-6">
 
         {/* Left: Logo */}
-        <div className="flex-shrink-0 cursor-pointer">
-          <Link href="/">
+        <div className="flex-shrink-0 cursor-pointer z-50">
+          <Link href="/" onClick={closeMenu}>
             <Image
               src="/image/logo.svg"
               alt="HireHubJA Logo"
               width={150}
               height={90}
-              className="object-contain h-[70px] w-auto"
+              className="object-contain h-[60px] md:h-[70px] w-auto"
               priority
             />
           </Link>
         </div>
 
-        {/* Center: Dynamic Navigation Links */}
+        {/* Center: Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-8 lg:gap-12">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
@@ -120,52 +124,55 @@ export default function Navbar() {
           })}
         </nav>
 
-        {/* Right: Auth Actions */}
-        <div className="flex-shrink-0">
+        {/* Right: Auth Actions & Mobile Toggle */}
+        <div className="flex items-center gap-3">
+          
+          {/* Auth Logic */}
           {!isAuthenticated ? (
             // GUEST VIEW
             <div className="flex items-center gap-4">
-              <Link href="/signin">
-                <Button variant="ghost" className="text-gray-600 hover:text-[#3FAE2A] font-semibold text-base">
-                  Sign In
-                </Button>
-              </Link>
-              <Link href="/signup">
-                <Button className="bg-[#3FAE2A] hover:bg-[#359624] text-white font-semibold rounded-full px-6 h-11 text-base shadow-md">
-                  Get Started
-                </Button>
-              </Link>
+              {/* Desktop Buttons */}
+              <div className="hidden md:flex items-center gap-4">
+                <Link href="/signin">
+                  <Button variant="ghost" className="text-gray-600 hover:text-[#3FAE2A] font-semibold text-base">
+                    Sign In
+                  </Button>
+                </Link>
+                <Link href="/signup">
+                  <Button className="bg-[#3FAE2A] hover:bg-[#359624] text-white font-semibold rounded-full px-6 h-11 text-base shadow-md">
+                    Get Started
+                  </Button>
+                </Link>
+              </div>
             </div>
           ) : (
             // LOGGED IN VIEW
-            <div className="flex items-center gap-4 md:gap-6">
-
+            <div className="flex items-center gap-3 md:gap-6">
               {/* Notification Bell */}
               <Link href="/auth/notifications">
                 <Button
                   variant="ghost"
                   size="icon"
-                  className="relative rounded-full bg-gray-50 text-gray-500 hover:text-[#3FAE2A] hover:bg-green-50 h-10 w-10 transition"
+                  className="relative rounded-full bg-gray-50 text-gray-500 hover:text-[#3FAE2A] hover:bg-green-50 h-9 w-9 md:h-10 md:w-10 transition"
                 >
                   <Bell className="h-5 w-5" />
                   <span className="sr-only">Notifications</span>
-                  {/* Red Dot Indicator */}
                   <span className="absolute top-2.5 right-2.5 h-2 w-2 rounded-full bg-red-500 ring-2 ring-white" />
                 </Button>
-
               </Link>
+
               {/* User Dropdown Profile */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <div className="flex items-center gap-3 cursor-pointer group p-1 rounded-full hover:bg-gray-50 transition">
-                    <Avatar className="h-10 w-10 border-2 border-transparent group-hover:border-[#3FAE2A] transition">
+                    <Avatar className="h-9 w-9 md:h-10 md:w-10 border-2 border-transparent group-hover:border-[#3FAE2A] transition">
                       <AvatarImage src={user?.avatar || "https://github.com/shadcn.png"} alt={user?.name} />
                       <AvatarFallback className="bg-green-100 text-green-700 font-bold">
                         {user?.name?.[0]?.toUpperCase() || "U"}
                       </AvatarFallback>
                     </Avatar>
 
-                    {/* Name & Role (Hidden on small screens) */}
+                    {/* Name & Role */}
                     <div className="hidden sm:flex flex-col items-start">
                       <span className="text-sm font-bold text-gray-800 leading-tight">
                         {user?.name}
@@ -181,24 +188,76 @@ export default function Navbar() {
                 <DropdownMenuContent align="end" className="w-56 mt-2">
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
-
                   <DropdownMenuItem className="cursor-pointer" onClick={() => router.push(`/auth/profile`)}>
                     <User className="mr-2 h-4 w-4" />
                     <span>Profile</span>
                   </DropdownMenuItem>
-
                   <DropdownMenuItem className="cursor-pointer" onClick={() => router.push(`/auth/settings`)}>
                     <Settings className="mr-2 h-4 w-4" />
                     <span>Settings</span>
                   </DropdownMenuItem>
-
                   <DropdownMenuSeparator />
+                  <DropdownMenuItem className="cursor-pointer text-red-600 focus:text-red-600" onClick={() => dispatch(logout())}>
+                     <LogOut className="mr-2 h-4 w-4" />
+                     <span>Log out</span>
+                  </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
             </div>
           )}
+
+          {/* Mobile Menu Button */}
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            className="md:hidden text-gray-600" 
+            onClick={toggleMenu}
+          >
+            {isMobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </Button>
+
         </div>
       </div>
+
+      {/* Mobile Navigation Overlay */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden absolute top-[90px] left-0 w-full bg-white border-b shadow-lg p-4 flex flex-col gap-4 z-40">
+          <nav className="flex flex-col gap-4">
+            {navLinks.map((link) => {
+              const isActive = pathname === link.href;
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={closeMenu}
+                  className={`text-base font-medium transition-all duration-200 ${isActive
+                    ? "text-[#3FAE2A] pl-2 border-l-4 border-[#3FAE2A]"
+                    : "text-gray-600 hover:text-[#3FAE2A] pl-2"
+                    }`}
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
+          </nav>
+
+          {/* Mobile Guest Auth Buttons */}
+          {!isAuthenticated && (
+            <div className="flex flex-col gap-3 mt-4 border-t pt-4">
+              <Link href="/signin" onClick={closeMenu}>
+                <Button variant="outline" className="w-full text-gray-600 hover:text-[#3FAE2A] font-semibold">
+                  Sign In
+                </Button>
+              </Link>
+              <Link href="/signup" onClick={closeMenu}>
+                <Button className="w-full bg-[#3FAE2A] hover:bg-[#359624] text-white font-semibold">
+                  Get Started
+                </Button>
+              </Link>
+            </div>
+          )}
+        </div>
+      )}
     </header>
   );
 }
