@@ -38,13 +38,14 @@ export default function JobCard({ job }: { job: JobProps }) {
   };
 
   return (
+    // Changed: Added w-full for mobile (1 card) and kept sm:w-[260px] for desktop
     <div className="w-full sm:w-[260px] flex flex-col h-full bg-white rounded-2xl border border-[#E5E7EB] shadow-[0px_0px_10px_2px_#3FAE2A1A] p-5 transition-all hover:shadow-md">
 
       {/* Top Header */}
       <div>
         <div className="flex justify-between items-start mb-1">
-          {/* Company Info */}
-          <div className="flex items-center gap-3 ">
+          {/* Company Logo */}
+          <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center overflow-hidden border border-gray-100">
               <Image
                 src={job.logo}
@@ -54,25 +55,26 @@ export default function JobCard({ job }: { job: JobProps }) {
                 className="rounded-full object-contain scale-150"
               />
             </div>
+          </div>
 
+          {/* Right Side: Date & Bookmark */}
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 text-[11px] font-medium mt-3 text-gray-500 bg-gray-50 px-2 py-0.5 rounded-md border border-gray-100">
+              <Calendar size={12} /> {job.date}
+            </div>
+            <button className="text-gray-400 hover:text-[#3FAE2A] transition-colors mt-3">
+              <Bookmark
+                size={18}
+                className={job.isBookmarked ? "fill-[#3FAE2A] text-[#3FAE2A]" : ""}
+              />
+            </button>
           </div>
-          <div className="flex items-center gap-1 text-[11px] font-medium mt-3 text-gray-500 bg-gray-50  rounded-md border border-gray-100">
-            <Calendar size={12} /> {job.date}
-          </div>
-          <button className="text-gray-400 hover:text-[#3FAE2A] transition-colors mt-3">
-            <Bookmark
-              size={18}
-              className={job.isBookmarked ? "fill-[#3FAE2A] text-[#3FAE2A]" : ""}
-            />
-          </button>
         </div>
-        <span className="text-xs font-semibold text-gray-500 truncate">{job.company}</span>
+        <span className="text-xs font-semibold text-gray-500 truncate block mt-1">{job.company}</span>
       </div>
 
-
-
       {/* Job Title */}
-      <Link href={targetLink} className="block mb-2">
+      <Link href={targetLink} className="block mb-2 mt-1">
         <h3 className="text-lg font-bold text-gray-800 hover:text-[#3FAE2A] transition-colors line-clamp-2">
           {job.title}
         </h3>
@@ -105,9 +107,9 @@ export default function JobCard({ job }: { job: JobProps }) {
       </div>
 
       {/* Bottom Info */}
-      <div className="mt-auto items-center justify-between pt-4 border-t border-gray-50">
+      <div className="mt-auto flex items-center justify-between pt-4 border-t border-gray-50">
         <p className="text-[#3FAE2A] font-bold text-sm truncate">{job.salary}</p>
-        <div className="flex items-center gap-1 mt-1 text-gray-400 text-xs">
+        <div className="flex items-center gap-1 text-gray-400 text-xs">
           <MapPin size={12} />
           <span className="truncate max-w-[120px]">{job.location}</span>
         </div>
