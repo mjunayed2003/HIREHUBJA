@@ -195,20 +195,6 @@ export default function InboxPage() {
           </div>
         </div>
 
-        {/* --- Right Sidebar: Context Options (Desktop Only) --- */}
-        <div className="w-64 p-6 hidden lg:block border-l h-full">
-          <div className="bg-white border rounded-2xl shadow-sm p-2 space-y-1">
-            <Button variant="ghost" className="w-full justify-start text-sm font-medium text-gray-700 hover:bg-gray-50">
-              Media & File
-            </Button>
-            <Button variant="ghost" className="w-full justify-start text-sm font-medium text-red-500 hover:bg-red-50">
-              Report User
-            </Button>
-            <Button variant="ghost" className="w-full justify-start text-sm font-medium text-gray-700 hover:bg-gray-50">
-              Delete Conversations
-            </Button>
-          </div>
-        </div>
 
       </div>
     </div>
