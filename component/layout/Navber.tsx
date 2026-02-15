@@ -33,16 +33,16 @@ const COMPANY_LINKS = [
   { label: "Home", href: "/" },
   { label: "Jobs", href: "/auth/company/jobs" },
   { label: "Inbox", href: "/auth/inbox" },
-  { label: "How It Works", href: "/auth/company/how-it-works" },
-  { label: "Support", href: "/auth/company/support" },
+  { label: "How It Works", href: "/how-it-works" },
+  { label: "Support", href: "/auth/support" },
 ];
 
 const EMPLOYER_LINKS = [
   { label: "Home", href: "/" },
   { label: "Jobs", href: "/auth/employer/jobs" },
   { label: "Inbox", href: "/auth/inbox" },
-  { label: "How It Works", href: "/auth/employer/how-it-works" },
-  { label: "Support", href: "/auth/employer/support" },
+  { label: "How It Works", href: "/how-it-works" },
+  { label: "Support", href: "/auth/support" },
 ];
 
 const JOB_SEEKER_LINKS = [
@@ -50,7 +50,7 @@ const JOB_SEEKER_LINKS = [
   { label: "Jobs", href: "/auth/jobseaker/jobs" },
   { label: "Inbox", href: "/auth/inbox" },
   { label: "How It Works", href: "/auth/jobseaker/how-it-works" },
-  { label: "Support", href: "/auth/jobseaker/support" },
+  { label: "Support", href: "/auth/support" },
 ];
 
 export default function Navbar() {
@@ -187,12 +187,12 @@ export default function Navbar() {
                   <DropdownMenuLabel>My Account</DropdownMenuLabel>
                   <DropdownMenuSeparator />
 
-                  <DropdownMenuItem className="cursor-pointer" onClick={() => router.push(`/auth/${user?.role}/profile`)}>
+                  <DropdownMenuItem className="cursor-pointer" onClick={() => router.push(`/auth/profile`)}>
                     <User className="mr-2 h-4 w-4" />
                     <span>Profile</span>
                   </DropdownMenuItem>
 
-                  <DropdownMenuItem className="cursor-pointer" onClick={() => router.push(`/auth/${user?.role}/settings`)}>
+                  <DropdownMenuItem className="cursor-pointer" onClick={() => router.push(`/auth/settings`)}>
                     <Settings className="mr-2 h-4 w-4" />
                     <span>Settings</span>
                   </DropdownMenuItem>

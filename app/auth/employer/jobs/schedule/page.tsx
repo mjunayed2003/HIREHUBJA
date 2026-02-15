@@ -46,7 +46,7 @@ export default function ScheduleForm() {
           <Input placeholder="Paste Zoom meeting link" className="h-12 bg-gray-50/50" />
         </div>
 
-        <Button onClick={() => router.push('/auth/employer/jobs/details')} className="w-full bg-[#3FAE2A] hover:bg-green-700 py-7 text-lg rounded-2xl font-bold mt-4 shadow-lg shadow-green-100">
+        <Button onClick={() => router.push('/auth/employer/jobs/interview')} className="w-full bg-[#3FAE2A] hover:bg-green-700 py-7 text-lg rounded-2xl font-bold mt-4 shadow-lg shadow-green-100">
           Confirm Schedule
         </Button>
       </div>

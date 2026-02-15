@@ -1,59 +1,108 @@
 "use client";
 import { useRouter } from "next/navigation";
+import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { ArrowLeft, CheckCircle2, Copy } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { ArrowLeft } from "lucide-react";
+import Image from "next/image";
 
-export default function InterviewDetails() {
+export default function InterviewListPage() {
   const router = useRouter();
   return (
-    <div className="max-w-4xl mx-auto p-10 space-y-8">
-      <Button variant="ghost" size="icon" onClick={() => router.back()} className="rounded-full border">
+    <div className="max-w-7xl mx-auto p-6 space-y-6 bg-gray-50 min-h-screen">
+      {/* Header Section */}
+      <div className="flex items-center gap-4">
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          onClick={() => router.back()} 
+          className="rounded-full border bg-white hover:bg-gray-100"
+        >
           <ArrowLeft size={18} />
-      </Button>
-
-      <div className="flex justify-between items-start">
-         <h1 className="text-2xl font-bold">Interview Details</h1>
-         <div className="flex gap-4 items-center">
-            <p className="text-sm font-bold">Need Help?</p>
-            <Button className="bg-[#3FAE2A] px-10 rounded-xl h-11 font-bold">Support</Button>
-            <Button variant="outline" className="bg-green-50 border-none text-[#3FAE2A] px-10 rounded-xl h-11 font-bold">Message</Button>
-         </div>
-      </div>
-
-      <div className="max-w-sm">
-        <div className="bg-[#3FAE2A] text-white p-2 text-center rounded-t-xl text-sm flex items-center justify-center gap-2">
-            <CheckCircle2 size={16}/> Interview Scheduled
-        </div>
-        <div className="bg-[#EAF6EA] text-[#3FAE2A] p-3 text-center rounded-b-xl text-lg font-bold">
-            Starts in: 01h 31m 18s
+        </Button>
+        <div>
+          <h1 className="text-xl font-bold text-gray-900">Interview Scheduled</h1>
+          <p className="text-sm text-gray-500">Total Interview Scheduled: 08</p>
         </div>
       </div>
 
-      <div className="space-y-4 pt-4">
-        <h3 className="font-bold text-lg">Interview Overview</h3>
-        <div className="space-y-2 text-sm text-gray-600 font-medium">
-            <p>Position: <span className="text-black">Senior Sales Executive</span></p>
-            <p>Company: <span className="text-black">Mercedes-Benz</span></p>
-            <p>Interview Type: <span className="text-black">Video Interview (Zoom)</span></p>
-            <p>Interview Date: <span className="text-black">Wednesday, 22 January 2026</span></p>
-            <p>Interview Time: <span className="text-black">11:00AM-11:30AM (GMT6+)</span></p>
-            <p>Duration: <span className="text-black">30 minutes</span></p>
-        </div>
-      </div>
-
-      <div className="space-y-4">
-        <h3 className="font-bold">Join Interview</h3>
-        <div className="flex items-center gap-2 text-blue-500 font-semibold">
-           <div className="w-5 h-5 rounded-full bg-blue-500 flex items-center justify-center">
-              <div className="w-2 h-2 bg-white rounded-full"></div>
-           </div>
-           Zoom Video Call
-        </div>
-        <Button className="bg-[#3FAE2A] hover:bg-green-700 px-10 h-11 font-bold rounded-xl">Join Interview</Button>
-        <div className="flex items-center gap-2 text-xs text-gray-400">
-            Meeting Link: <span className="text-gray-800 font-bold underline">zoom.us/j/874392XXXX</span> <Copy size={12} className="cursor-pointer" />
-        </div>
+      {/* Grid Layout */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
+          <InterviewCandidateCard key={i} />
+        ))}
       </div>
     </div>
+  );
+}
+
+function InterviewCandidateCard() {
+  const router = useRouter();
+  return (
+    <Card className="p-2 border border-gray-100 shadow-sm rounded-2xl bg-white hover:shadow-md transition-shadow">
+      
+      {/* Profile Header */}
+      <div className="flex gap-4">
+        {/* Avatar */}
+        <div className="max-w-14 rounded-full border-2 border-white shadow-sm overflow-hidden shrink-0">
+          <Image 
+            src="https://github.com/shadcn.png" 
+            alt="profile" 
+            width={56} 
+            height={56}
+            className="w-full h-full object-cover"
+          />
+        </div>
+        
+        {/* Name & Badge */}
+        <div className="flex-1 flex flex-col justify-center">
+          <div className="flex justify-between items-start">
+            <div>
+              <h4 className="font-bold text-base text-gray-900 leading-tight">Sowrove Bepary</h4>
+              <p className="text-sm text-gray-500 mt-1">Senior Sales Executive</p>
+            </div>
+            <Badge className="bg-[#FFF4E5] text-[#FF9500] hover:bg-[#FFF4E5] border border-[#FFE4C4] text-[10px] px-2 font-medium rounded-md shadow-none">
+              Interview Scheduled
+            </Badge>
+          </div>
+        </div>
+      </div>
+
+      {/* Dashed Divider */}
+      <div className="border-t border-dashed border-gray-200 w-full" />
+
+      {/* Details Info */}
+      <div className="text-sm">
+        <div className="flex items-center gap-2">
+          <span className="text-gray-500 min-w-[110px]">Experience level:</span>
+          <span className="text-gray-900 font-semibold">Senior level</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-gray-500 min-w-[110px]">Applied Date:</span>
+          <span className="text-gray-900 font-semibold">05.01.2026</span>
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-gray-500 min-w-[110px]">Interview Schedule:</span>
+          <span className="text-gray-900 font-semibold">12:00 PM <span className="ml-1">15.01.2026</span></span>
+        </div>
+      </div>
+
+      {/* Action Buttons */}
+      <div className="flex gap-3 ">
+        <Button 
+          onClick={() => router.push('/auth/employer/jobs/1')} 
+          className="flex-1 bg-[#47B649] hover:bg-[#3da13e] text-white text-sm font-medium h-10 rounded-lg shadow-none"
+        >
+          Details
+        </Button>
+        <Button 
+          variant="outline" 
+          className="flex-1 bg-[#E9F7E9] hover:bg-[#dff3df] border-transparent text-[#47B649] text-sm font-semibold h-10 rounded-lg shadow-none"
+        >
+          Message
+        </Button>
+      </div>
+
+    </Card>
   );
 }
