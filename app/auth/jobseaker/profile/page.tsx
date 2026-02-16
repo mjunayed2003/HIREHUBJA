@@ -68,7 +68,7 @@ export default function EmployerProfile() {
         <ProfileListItem 
           icon={<User className="text-white" size={18}/>} 
           label="Professional Details" 
-          onClick={() => router.push('/auth/profile/details')} 
+          onClick={() => router.push('/auth/jobseaker/profile/details')} 
         />
         <ProfileListItem 
           icon={<Settings className="text-white" size={18}/>} 
