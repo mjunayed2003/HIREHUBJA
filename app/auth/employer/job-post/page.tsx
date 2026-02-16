@@ -49,9 +49,6 @@ const EmployerJobContent = () => {
     }
   };
 
-  if (currentStep === 6) {
-    return <SuccessScreen />;
-  }
 
   return (
     <div className="max-w-[1000px] mx-auto p-4 md:p-10 pb-20">

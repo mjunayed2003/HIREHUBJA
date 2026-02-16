@@ -15,8 +15,7 @@ export default function Step5Review() {
     formData.workType,
     formData.experienceLevel,
     formData.workTime,
-    // Add specific categories if needed, or stick to the 3 main tags
-  ].filter(Boolean); // Remove empty values
+  ].filter(Boolean); 
 
   // Current Date for Preview
   const currentDate = new Date().toLocaleDateString("en-GB", {
@@ -33,11 +32,10 @@ export default function Step5Review() {
       <Card className="w-full max-w-[320px] sm:w-[320px] bg-white rounded-[10px] border-[0.6px] border-[#E5E7EB] shadow-[0px_0px_10px_2px_#3FAE2A1A] transition-all duration-300 relative overflow-hidden">
         
         <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-2">
-          {/* Logo / Avatar */}
           <div className="flex items-center gap-3">
             <Avatar className="h-10 w-10 bg-white border rounded-full overflow-hidden">
               <AvatarImage
-                src="/image/jobOpportunities.jpg" // Placeholder or dynamic logo
+                src="/image/jobOpportunities.jpg"
                 alt="Company Logo"
                 className="object-cover"
               />
@@ -104,7 +102,7 @@ export default function Step5Review() {
           {/* Edit Button (Visual Integration) */}
           <Button 
             size="sm" 
-            onClick={() => setCurrentStep(1)} // Go back to step 1
+            onClick={() => setCurrentStep(1)}
             className="h-8 px-4 bg-[#3FAE2A] hover:bg-green-700 text-white rounded-full text-xs font-bold shadow-sm"
           >
             Edit

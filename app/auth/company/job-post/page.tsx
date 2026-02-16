@@ -26,7 +26,6 @@ const EMPLOYER_CATEGORIES = [
   "Skilled Trades",
 ];
 
-
 const EmployerJobContent = () => {
   const router = useRouter();
   const { currentStep, prevStep } = useJobPost();
@@ -34,7 +33,6 @@ const EmployerJobContent = () => {
   const renderStep = () => {
     switch (currentStep) {
       case 1:
-        // Pass Employer specific categories here
         return <Step1Basics categoryList={EMPLOYER_CATEGORIES} />;
       case 2:
         return <Step2Details />;
@@ -51,24 +49,21 @@ const EmployerJobContent = () => {
     }
   };
 
-  if (currentStep === 6) {
-    return <SuccessScreen />;
-  }
-
   return (
     <div className="max-w-[1000px] mx-auto p-4 md:p-10 pb-20">
-      {/* Header */}
+      {/* Header with Back Button */}
       <div className="flex flex-col md:flex-row items-center justify-between mb-10 gap-6">
         <div className="flex items-center self-start md:self-auto w-full md:w-auto">
           <Button
             variant="ghost"
             size="icon"
+            
             onClick={currentStep === 1 ? () => router.back() : prevStep}
             className="rounded-full border border-gray-200 mr-4"
           >
             <ArrowLeft size={20} />
           </Button>
-          <h1 className="text-2xl font-bold">Post a Job (Employer)</h1>
+          <h1 className="text-2xl font-bold">Post a Job (Company)</h1>
         </div>
         <Stepper currentStep={currentStep} />
       </div>
