@@ -88,7 +88,7 @@ const JournyAndApp = () => {
         
         {/* Left: Content */}
         <div className="flex flex-col items-center text-center lg:items-start lg:text-left">
-          <h2 className="text-3xl font-bold text-green-600 md:text-4xl">
+          <h2 className="text-3xl font-bold text-green-600 md:text-4xl mt-4">
             Download Our Mobile App
           </h2>
           <h3 className="mt-2 text-lg font-medium text-gray-500">

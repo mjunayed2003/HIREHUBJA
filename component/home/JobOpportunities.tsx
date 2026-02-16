@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Bookmark, MapPin } from "lucide-react"
 import Image from 'next/image'
+import Link from 'next/link'
 
 const jobListings = [
   {
@@ -71,10 +72,11 @@ const jobListings = [
   },
 ];
 
+
+
 const JobOpportunities = () => {
   return (
     <div className='max-w-[1622px] w-full mx-auto pb-10 px-4'>
-      
       {/* Header Section */}
       <div className='mx-auto pb-12'>
         <h5 className='text-[40px] md:text-[64px] font-bold mx-auto text-center text-[#3FAE2A] leading-tight'>
@@ -88,6 +90,7 @@ const JobOpportunities = () => {
       {/* Job Cards Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 gap-6 justify-center">
         {jobListings.slice(0, 6).map((job) => (
+          <Link href={`/auth/jobseaker/jobs/${job.id}`}>
           <Card
             key={job.id}
             className="w-full sm:w-[260px] h-[284px] bg-white rounded-[10px] border-[0.6px] border-[#E5E7EB] shadow-[0px_0px_10px_2px_#3FAE2A1A] transition-all duration-300"
@@ -104,8 +107,8 @@ const JobOpportunities = () => {
                 </Avatar>
               </div>
 
-              <div className="flex items-center mt-3 gap-2">
-                <span className="text-xs text-gray-500 font-medium border border-gray-300 px-2 py-0.5 rounded-full">
+              <div className="flex items-center mt-2 gap-2">
+                <span className="text-xs text-gray-500 font-medium border border-gray-300 px-2 py-0.5 rounded-full mr-10">
                   {job.date}
                 </span>
                 <Button
@@ -147,6 +150,7 @@ const JobOpportunities = () => {
               </div>
             </CardFooter>
           </Card>
+          </Link>
         ))}
       </div>
     </div>

@@ -49,7 +49,7 @@ const EMPLOYER_LINKS = [
 const JOB_SEEKER_LINKS = [
   { label: "Home", href: "/" },
   { label: "Jobs", href: "/auth/jobseaker/jobs" },
-  { label: "Inbox", href: "/auth/inbox" },
+  { label: "Inbox", href: "/auth/inbox" }, 
   { label: "How It Works", href: "/how-it-works" },
   { label: "Support", href: "/support" },
 ];

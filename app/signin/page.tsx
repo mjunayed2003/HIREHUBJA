@@ -7,12 +7,11 @@ import { useRouter } from "next/navigation";
 import { useDispatch } from "react-redux";
 import { Eye, EyeOff, Mail, Lock } from "lucide-react"; // Icons updated
 
-import { login } from "@/redux/authSlice"; // আপনার স্লাইস পাথ চেক করুন
+import { login } from "@/redux/authSlice"; 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-// টাইপ ডিফিনিশন (আপনার স্লাইসের সাথে মিল রেখে)
 type UserRole = "company" | "employer" | "job-seeker";
 
 export default function SignInPage() {
@@ -28,8 +27,7 @@ export default function SignInPage() {
         setIsLoading(true);
 
         // --- MOCK LOGIC FOR DEVELOPMENT START ---
-        // বাস্তবে এখানে আপনি API কল করবেন।
-        // টেস্টিংয়ের জন্য আমরা ইমেইল দেখে রোল ঠিক করছি:
+
         
         let assignedRole: UserRole = "job-seeker"; // Default
 
@@ -44,14 +42,14 @@ export default function SignInPage() {
             name: assignedRole === "company" ? "Tech Solutions Ltd" : "John Doe",
             email: formData.email,
             avatar: "https://github.com/shadcn.png",
-            role: assignedRole, // এই রোলটি রিডাক্সে যাবে
+            role: assignedRole,
         };
 
-        // একটু সময় নিচ্ছি যাতে লোডিং ইফেক্ট বোঝা যায়
+
         setTimeout(() => {
-            dispatch(login(mockUser)); // Redux-এ ডেটা পাঠানো হলো
+            dispatch(login(mockUser));
             setIsLoading(false);
-            router.push("/"); // হোম পেজে রিডাইরেক্ট
+            router.push("/"); 
         }, 1000);
         // --- MOCK LOGIC END ---
     };
@@ -89,7 +87,7 @@ export default function SignInPage() {
                         <p className="text-gray-500 text-sm mt-2">Sign in to manage your account</p>
                     </div>
 
-                    {/* Dev Hint (ডেভেলপমেন্টের সময় সুবিধার জন্য, পরে মুছে দেবেন) */}
+                    {/* Dev Hint  */}
                     <div className="bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-2 mb-4 text-xs w-full max-w-md">
                         <p className="font-bold">Testing Tips:</p>
                         <p>1. Use "<b>company</b>@test.com" for Company View</p>

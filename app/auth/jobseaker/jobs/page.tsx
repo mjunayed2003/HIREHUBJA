@@ -49,7 +49,7 @@ const JOBS = [
         date: "25 Dec 2026",
         salary: "$4000/Month",
         location: "London, UK",
-        type: ["Full Time", "Lead", "On-site", "Sales"],
+        type: ["Full Time", "Lead-Manage", "On-site", "Sales"],
         status: "Hired",
     },
     {
@@ -60,7 +60,7 @@ const JOBS = [
         date: "25 Dec 2026",
         salary: "$4000/Month",
         location: "London, UK",
-        type: ["Full Time", "Lead", "On-site", "Sales"],
+        type: ["Full Time", "Lead-Manage", "On-site", "Sales"],
         status: "Hired",
     },
 ];

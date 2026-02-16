@@ -39,8 +39,8 @@ export default function JobCard({ job }: { job: JobProps }) {
 
   return (
     // Changed: Added w-full for mobile (1 card) and kept sm:w-[260px] for desktop
-    <div className="w-full sm:w-[260px] flex flex-col h-full bg-white rounded-2xl border border-[#E5E7EB] shadow-[0px_0px_10px_2px_#3FAE2A1A] p-5 transition-all hover:shadow-md">
-
+    <div className="w-full sm:w-[260px] flex flex-col h-full bg-white rounded-2xl border border-[#E5E7EB] shadow-[0px_0px_10px_2px_#3FAE2A1A] p-3 transition-all hover:shadow-md">
+      <Link href={targetLink} className="block ">
       {/* Top Header */}
       <div>
         <div className="flex justify-between items-start mb-1">
@@ -59,7 +59,7 @@ export default function JobCard({ job }: { job: JobProps }) {
 
           {/* Right Side: Date & Bookmark */}
           <div className="flex items-center gap-2">
-            <div className="flex items-center gap-1 text-[11px] font-medium mt-3 text-gray-500 bg-gray-50 px-2 py-0.5 rounded-md border border-gray-100">
+            <div className="flex items-center gap-1 text-[11px] font-medium mt-2 text-gray-500 bg-gray-50 px-2 py-0.5 rounded-md border border-gray-100 mr-10">
               <Calendar size={12} /> {job.date}
             </div>
             <button className="text-gray-400 hover:text-[#3FAE2A] transition-colors mt-3">
@@ -94,7 +94,7 @@ export default function JobCard({ job }: { job: JobProps }) {
       )}
 
       {/* Tags */}
-      <div className="flex flex-wrap gap-2 mb-4">
+      <div className="flex flex-wrap gap-2 mb-2">
         {job.type.map((tag, index) => (
           <Badge
             key={index}
@@ -107,13 +107,15 @@ export default function JobCard({ job }: { job: JobProps }) {
       </div>
 
       {/* Bottom Info */}
-      <div className="mt-auto flex items-center justify-between pt-4 border-t border-gray-50">
+      <div className="mt-auto  items-center border-t border-gray-50">
         <p className="text-[#3FAE2A] font-bold text-sm truncate">{job.salary}</p>
-        <div className="flex items-center gap-1 text-gray-400 text-xs">
+        <div className="flex items-center gap-2 text-gray-400 text-xs">
           <MapPin size={12} />
           <span className="truncate max-w-[120px]">{job.location}</span>
         </div>
       </div>
-    </div>
+
+    </Link>
+    </div >
   );
 }
