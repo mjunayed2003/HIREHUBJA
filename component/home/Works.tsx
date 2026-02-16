@@ -24,7 +24,7 @@ const steps = [
 
 const Works = () => {
   return (
-    <section className="py-16 bg-white">
+    <section id="how-it-works" className="py-16 bg-white scroll-mt-24">
       {/* Container with fixed width as per request (max-width used for responsiveness) */}
       <div className=" max-w-[1251px] w-full mx-auto px-4">
         

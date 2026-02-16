@@ -34,7 +34,7 @@ export default function JobsPage() {
       </div>
 
       <div className="flex justify-center ">
-        <Button className="bg-[#3FAE2A] hover:bg-green-700 px-50 py-6 rounded-xl text-lg gap-2">
+        <Button onClick={()=>router.push("/auth/company/job-post")} className="bg-[#3FAE2A] hover:bg-green-700 px-50 py-6 rounded-xl text-lg gap-2">
           <Mail size={25} /> Post a New Job
         </Button>
       </div>
