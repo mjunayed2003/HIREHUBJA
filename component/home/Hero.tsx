@@ -1,11 +1,32 @@
 "use client";
 
 import Image from "next/image";
-import { Check } from "lucide-react"; // Removed unused icons
+import { Check } from "lucide-react";
+import { useSelector } from "react-redux"; 
+import { useRouter } from "next/navigation"; 
 
+import { RootState } from "@/redux/store"; 
 import { Button } from "@/components/ui/button";
 
 export default function HomePage() {
+  const router = useRouter();
+  const { user } = useSelector((state: RootState) => state.auth);
+
+  // Determine button text and action based on role
+  const isHiringRole = user?.role === "employer" || user?.role === "company";
+
+  const handleHeroAction = () => {
+    if (user?.role === "company") {
+      router.push("/auth/company/job-post");
+    } else if (user?.role === "employer") {
+      router.push("/auth/employer/job-post");
+    }else if (user?.role === "job-seeker") {
+      router.push("/auth/jobseaker/jobs");
+    }else {
+      router.push("/jobs"); // Job Seekers & Guests
+    }
+  };
+
   return (
     <div className="min-h-screen bg-white font-sans text-[#1a1a1a] overflow-x-hidden">
 
@@ -29,13 +50,17 @@ export default function HomePage() {
                   A trusted job marketplace that connects verified employers with skilled professionals — securely, efficiently, and transparently.
                 </p>
 
-                {/* Buttons */}
+                {/* Dynamic Button Section */}
                 <div className="flex flex-wrap gap-5 mt-8">
-                  <Button className="bg-[#3FAE2A] hover:bg-[#369624] text-white font-bold rounded-full h-[60px] px-10 text-lg shadow-lg shadow-green-100 w-[200px]">
-                    Find a Job
-                  </Button>
-                  <Button className="bg-white hover:bg-green-50 text-[#3FAE2A] border border-[#3FAE2A] font-bold rounded-full h-[60px] px-10 text-lg w-[200px]">
-                    Post a Job
+                  <Button 
+                    onClick={handleHeroAction}
+                    className={`font-bold rounded-full h-[60px] px-10 text-lg w-[200px] transition-all
+                      ${isHiringRole 
+                        ? "bg-white hover:bg-green-50 text-[#3FAE2A] border border-[#3FAE2A]" 
+                        : "bg-[#3FAE2A] hover:bg-[#369624] text-white shadow-lg shadow-green-100"
+                      }`}
+                  >
+                    {isHiringRole ? "Post a Job" : "Find a Job"}
                   </Button>
                 </div>
               </div>
@@ -49,7 +74,7 @@ export default function HomePage() {
                   <div className="absolute left-[360px] -top-[40px] w-[100px] h-[110px] hidden md:block pointer-events-none">
                     <Image
                       src="/image/arrow-mark.svg"
-                      alt="Mobile App Frame"
+                      alt="Arrow"
                       fill
                       priority
                       className="object-contain"
@@ -93,7 +118,7 @@ export default function HomePage() {
               {/* Background Glow */}
               <div className="absolute bottom-0 left-1/2 -translate-x-1/2 max-w-[535px] rounded-full bg-gradient-to-t from-[#EBFDF2] to-transparent blur-3xl opacity-80 pointer-events-none -z-10"></div>
 
-              {/* REPLACED: Image Component */}
+              {/* Hero Image */}
               <div className="relative z-10 w-[500px] h-[500px]">
                 <Image
                   src="/image/hero-mobileframe.svg"
@@ -112,11 +137,9 @@ export default function HomePage() {
       {/* ---------------- BOTTOM BANNER ---------------- */}
       <section className="pb-20 flex justify-center w-full px-4">
         <div className="relative w-full max-w-[1621px] h-[312px] rounded-[18px] overflow-hidden shadow-2xl group">
-          {/* Background Image */}
           <Image src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=2070" alt="Meeting" fill className="object-cover group-hover:scale-105 transition-transform duration-700" />
           <div className="absolute inset-0 bg-linear-to-r from-[#1a3d16]/80 via-[#2d5c26]/80 to-[#3FAE2A]/40 mix-blend-multiply"></div>
 
-          {/* Stats Overlay */}
           <div className="relative z-10 h-full flex flex-col md:flex-row items-center justify-evenly text-center text-white">
             <div className="flex flex-col items-center">
               <h2 className="text-5xl md:text-[64px] font-bold mb-2">10K+</h2>
