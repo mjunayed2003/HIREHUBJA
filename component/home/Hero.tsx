@@ -2,28 +2,29 @@
 
 import Image from "next/image";
 import { Check } from "lucide-react";
-import { useSelector } from "react-redux"; 
-import { useRouter } from "next/navigation"; 
+import { useSelector } from "react-redux";
+import { useRouter } from "next/navigation";
 
-import { RootState } from "@/redux/store"; 
+import { RootState } from "@/redux/store";
 import { Button } from "@/components/ui/button";
 
 export default function HomePage() {
   const router = useRouter();
   const { user } = useSelector((state: RootState) => state.auth);
 
-  // Determine button text and action based on role
+  // Determine role for logged-in users
   const isHiringRole = user?.role === "employer" || user?.role === "company";
 
+  // Handle actions for logged-in users
   const handleHeroAction = () => {
     if (user?.role === "company") {
       router.push("/auth/company/job-post");
     } else if (user?.role === "employer") {
       router.push("/auth/employer/job-post");
-    }else if (user?.role === "job-seeker") {
+    } else if (user?.role === "job-seeker") {
       router.push("/auth/jobseaker/jobs");
-    }else {
-      router.push("/jobs"); // Job Seekers & Guests
+    } else {
+      router.push("/jobs");
     }
   };
 
@@ -50,19 +51,43 @@ export default function HomePage() {
                   A trusted job marketplace that connects verified employers with skilled professionals — securely, efficiently, and transparently.
                 </p>
 
-                {/* Dynamic Button Section */}
+                {/* ---------------- BUTTON SECTION (MODIFIED) ---------------- */}
                 <div className="flex flex-wrap gap-5 mt-8">
-                  <Button 
-                    onClick={handleHeroAction}
-                    className={`font-bold rounded-full h-[60px] px-10 text-lg w-[200px] transition-all
-                      ${isHiringRole 
-                        ? "bg-white hover:bg-green-50 text-[#3FAE2A] border border-[#3FAE2A]" 
-                        : "bg-[#3FAE2A] hover:bg-[#369624] text-white shadow-lg shadow-green-100"
-                      }`}
-                  >
-                    {isHiringRole ? "Post a Job" : "Find a Job"}
-                  </Button>
+
+                  {!user ? (
+                    <>
+                      {/* Button 1: Find a Job (Guest) */}
+                      <Button
+                        onClick={() => router.push("/signin")}
+                        className="font-bold rounded-full h-[60px] px-10 text-lg min-w-[180px] bg-[#3FAE2A] hover:bg-[#369624] text-white shadow-lg shadow-green-100 transition-all"
+                      >
+                        Find a Job
+                      </Button>
+
+                      {/* Button 2: Post a Job (Guest) */}
+                      <Button
+                        onClick={() => router.push("/signin")}
+                        className="font-bold rounded-full h-[60px] px-10 text-lg min-w-[180px] bg-white hover:bg-green-50 text-[#3FAE2A] border border-[#3FAE2A] transition-all"
+                      >
+                        Post a Job
+                      </Button>
+                    </>
+                  ) : (
+
+                    <Button
+                      onClick={handleHeroAction}
+                      className={`font-bold rounded-full h-[60px] px-10 text-lg w-[200px] transition-all
+        ${isHiringRole
+                          ? "bg-white hover:bg-green-50 text-[#3FAE2A] border border-[#3FAE2A]"
+                          : "bg-[#3FAE2A] hover:bg-[#369624] text-white shadow-lg shadow-green-100"
+                        }`}
+                    >
+                      {isHiringRole ? "Post a Job" : "Find a Job"}
+                    </Button>
+                  )}
                 </div>
+                {/* ---------------- END BUTTON SECTION ---------------- */}
+
               </div>
 
               {/* TRUST SECTION */}
