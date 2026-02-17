@@ -57,7 +57,7 @@ const EmployerJobContent = () => {
           <Button
             variant="ghost"
             size="icon"
-            
+
             onClick={currentStep === 1 ? () => router.back() : prevStep}
             className="rounded-full border border-gray-200 mr-4"
           >
@@ -65,7 +65,14 @@ const EmployerJobContent = () => {
           </Button>
           <h1 className="text-2xl font-bold">Post a Job (Company)</h1>
         </div>
-        <Stepper currentStep={currentStep} />
+      </div>
+
+      <div className="flex justify-center w-full mb-8 px-4">
+        <div className="w-full max-w-[700px]">
+          <div className="flex w-full justify-center mb-5">
+            <Stepper currentStep={currentStep} />
+          </div>
+        </div>
       </div>
 
       {/* Main Form Area */}

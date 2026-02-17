@@ -12,7 +12,7 @@ import Step5Review from "@/component/post-job/Step5Review";
 import Step4Salary from "@/component/post-job/Step4Salary";
 import SuccessScreen from "@/component/post-job/SuccessScreen";
 
- const EMPLOYER_CATEGORIES = [
+const EMPLOYER_CATEGORIES = [
   "Nurse aid/healthcare assistant",
   "Caregiver/personal care attendant",
   "Helper/domestic worker",
@@ -65,7 +65,14 @@ const EmployerJobContent = () => {
           </Button>
           <h1 className="text-2xl font-bold">Post a Job (Employer)</h1>
         </div>
-        <Stepper currentStep={currentStep} />
+      </div>
+
+      <div className="flex justify-center w-full mb-8 px-4">
+        <div className="w-full max-w-[700px]">
+          <div className="flex w-full justify-center mb-5">
+            <Stepper currentStep={currentStep} />
+          </div>
+        </div>
       </div>
 
       {/* Main Form Area */}
