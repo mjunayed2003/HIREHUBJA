@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "HireHubJA connects talented job seekers with top employers. Post jobs, apply instantly, and grow your career with our modern hiring platform.",
   keywords: [
     "HireHubJA",
-    "job portal",
+    "job ptal",
     "job website",
     "hiring platform",
     "find jobs",
@@ -34,6 +34,15 @@ export const metadata: Metadata = {
   authors: [{ name: "HireHubJA Team" }],
   creator: "HireHubJA",
   metadataBase: new URL("https://hirehubja.vercel.app/"),
+  openGraph: {
+    images: [
+      {
+        url: "/image/logo.svg",
+        width: 1200,
+        height: 630,
+      },
+    ],
+  },
 };
 
 export default function RootLayout({
