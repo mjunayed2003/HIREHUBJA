@@ -1,16 +1,38 @@
 "use client";
 
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
+import { useSelector } from "react-redux";
 import { User, Settings, LogOut, ChevronRight, CheckCircle2 } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
-import { useState } from "react";
-// Assuming you have this component, if not remove the import
-import LogoutModal from "@/component/profile/LogoutModel"; 
+import LogoutModal from "@/component/profile/LogoutModel";
+import { RootState } from "@/redux/store";
 
-export default function EmployerProfile() {
+export default function ProfilePage() {
   const router = useRouter();
   const [showLogout, setShowLogout] = useState(false);
+  
+  // Get user data from Redux
+  const { user } = useSelector((state: RootState) => state.auth);
+
+  // Handle routing based on role
+  const handleDetailsClick = () => {
+    const role = user?.role;
+
+    switch (role) {
+      case "company":
+        router.push("/auth/company/profile-details");
+        break;
+      case "employer":
+        router.push("/auth/employer/profile-details");
+        break;
+      case "job-seeker":
+      default:
+        router.push("/auth/jobseaker/profile-details");
+        break;
+    }
+  };
 
   return (
     <div className="max-w-5xl mx-auto pb-20 w-full">
@@ -31,7 +53,7 @@ export default function EmployerProfile() {
         {/* Profile Image */}
         <div className="w-32 h-32 md:w-44 md:h-44 rounded-2xl border-4 border-white overflow-hidden bg-white shadow-lg shrink-0">
           <Image 
-            src="/image/profile-picture.png" 
+            src={user?.avatar || "/image/profile-picture.png"} 
             alt="Profile" 
             width={176} 
             height={176} 
@@ -41,12 +63,14 @@ export default function EmployerProfile() {
 
         {/* Text Details */}
         <div className="text-center md:text-left space-y-1 md:mb-2">
-          <h1 className="text-2xl md:text-3xl font-bold text-[#3FAE2A]">Sowrove Bepary</h1>
+          <h1 className="text-2xl md:text-3xl font-bold text-[#3FAE2A]">
+            {user?.name || "User Name"}
+          </h1>
           <p className="text-gray-500 font-medium text-sm md:text-base">
-            Experience level: <span className="text-gray-700">Senior level</span>
+            Role: <span className="text-gray-700 capitalize">{user?.role?.replace("-", " ") || "Member"}</span>
           </p>
           <p className="text-sm text-gray-400">
-            Location: <span className="text-gray-800">Dhaka, Bangladesh</span>
+            Location: <span className="text-gray-800">{"Dhaka, Bangladesh"}</span>
           </p>
           
           <div className="flex gap-2 mt-3 justify-center md:justify-start flex-wrap">
@@ -68,7 +92,7 @@ export default function EmployerProfile() {
         <ProfileListItem 
           icon={<User className="text-white" size={18}/>} 
           label="Professional Details" 
-          onClick={() => router.push('/auth/jobseaker/profile/details')} 
+          onClick={handleDetailsClick} 
         />
         <ProfileListItem 
           icon={<Settings className="text-white" size={18}/>} 
@@ -83,7 +107,7 @@ export default function EmployerProfile() {
         />
       </div>
 
-      {/* Logout Modal - Uncomment when component is available */}
+      {/* Logout Modal */}
       <LogoutModal open={showLogout} onOpenChange={setShowLogout} />
     </div>
   );
