@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
-import Navbar from "@/component/layout/Navber";
+import Navbar from "@/component/layout/Navber"; 
 import Footer from "@/component/layout/Footer";
 
 const geistSans = Geist({
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "HireHubJA connects talented job seekers with top employers. Post jobs, apply instantly, and grow your career with our modern hiring platform.",
   keywords: [
     "HireHubJA",
-    "job ptal",
+    "job portal",
     "job website",
     "hiring platform",
     "find jobs",
@@ -35,13 +35,19 @@ export const metadata: Metadata = {
   creator: "HireHubJA",
   metadataBase: new URL("https://hirehubja.vercel.app/"),
   openGraph: {
+    title: "HireHubJA | Job Portal & Hiring Platform",
+    description: "Connect with top employers and find your dream job.",
+    url: "https://hirehubja.vercel.app/",
+    siteName: "HireHubJA",
     images: [
       {
-        url: "/image/logo.svg",
+        url: "/image/og.png",
         width: 1200,
         height: 630,
+        alt: "HireHubJA Og Image",
       },
     ],
+    type: "website",
   },
 };
 
@@ -57,7 +63,9 @@ export default function RootLayout({
       >
         <Providers>
           <Navbar />
-          {children}
+          <main className="min-h-screen"> 
+            {children}
+          </main>
           <Footer />
         </Providers>
       </body>
